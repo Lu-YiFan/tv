@@ -5,9 +5,102 @@
     xmlns:local="using:tv"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:tvdata.Models"
     mc:Ignorable="d">
+    <Page.Resources>
+        <DataTemplate x:DataType="data:TV"  x:Key="TVDataTemplate">
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock FontSize="14" Text="{x:Bind Title}" HorizontalAlignment="Center" />
+            </StackPanel>
+        </DataTemplate>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+       
 
+    </Page.Resources>
+
+    <Grid   >
+        
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        
+        
+       
+        
+        <Grid Grid.Row="0">
+            <Grid x:Name="btl" ></Grid>
+            <RelativePanel>
+            <Button Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="24" Click="HamburgerButton_Click" />
+                <StackPanel Margin="45,0,0,0">
+                    <TextBlock >欢迎使用该软件,资源问题请邮件联系（同支付婊账号）</TextBlock>
+                    <TextBlock Name="playname">当前正在播放：【无】</TextBlock>
+                </StackPanel>   
+            
+        </RelativePanel>
+        </Grid>
+
+        <Grid  Grid.Row="1">
+            <Grid x:Name="GlassHost" ></Grid>
+
+            <MediaElement Name="zhubfq" Margin="24,0,0,0" AreTransportControlsEnabled="True">
+                <MediaElement.TransportControls>
+                    <MediaTransportControls IsCompact="True"/>
+                </MediaElement.TransportControls>
+            </MediaElement>
+            
+            <SplitView Name="MySplitView" 
+                   Grid.Row="1" 
+                   DisplayMode="CompactInline"
+                   OpenPaneLength="300" 
+                   CompactPaneLength="44" 
+                   HorizontalAlignment="Left">
+            <SplitView.Pane>
+                <ListBox SelectionMode="Single" 
+                         Name="IconsListBox" >
+
+                    <ListBoxItem >
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="&#xEBFC;" Tapped="TextBlock_Tapped" />
+
+                            <TextBox TextWrapping="Wrap" Margin="10,0,0,0" Name="sjurl" Width="auto" Text="http://acm.gg/j.m3u8"></TextBox>
+
+                        </StackPanel>
+                    </ListBoxItem>
+                    
+                    
+                    <ListBoxItem >
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="&#xEB51;" Tapped="TextBlock_Tapped_1" />
+                            <Button Content="播放" Margin="10,0,0,0" Name="play" Click="play_Click"></Button>
+                            <Button Content="支持作者" Margin="10,0,0,0" Name="pay" Click="pay_Click" DoubleTapped="paybutton_DoubleTapped"></Button>
+                             <Button Content="随机" Margin="10,0,0,0" Name="sjcs" Click="sjcs_Click" Visibility="Collapsed"></Button>
+                            <Image DoubleTapped="Image_DoubleTapped"></Image>
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    
+
+                    <ListBoxItem>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="24" Text="&#xE734;" />
+                            <ListView ItemsSource="{x:Bind TVs}" 
+                  IsItemClickEnabled="True" 
+                  ItemClick="GridView_ItemClick"
+                  ItemTemplate="{StaticResource TVDataTemplate}">
+                    </ListView>
+                        </StackPanel>
+                    </ListBoxItem>
+                    
+                </ListBox>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <TextBlock Name="ResultTextBlock" />
+            </SplitView.Content>
+        </SplitView>
+        </Grid>
     </Grid>
+
 </Page>
