@@ -1,0 +1,6 @@
+books.Add(new TV { TVId = 1, Title = "经典电影", url = "http://rotation.vod.zlive.cc/channel/1200.m3u8" });  
+books.Add(new TV { TVId = 3, Title = "抗战剧场", url = "http://rotation.vod.zlive.cc/channel/1215.m3u8" });   
+books.Add(new TV { TVId = 6, Title = "未知电影1", url = "http://rotation.vod.zlive.cc/channel/1201.m3u8" }); 
+books.Add(new TV { TVId = 8, Title = "动漫1", url = "http://rotation.vod.zlive.cc/channel/1262.m3u8" });   
+books.Add(new TV { TVId = 9, Title = "哆啦A梦", url = "http://rotation.vod.zlive.cc/channel/1092.m3u8" });
+books.Add(new TV { TVId = 10, Title = "蜡笔小新", url = "http://rotation.vod.zlive.cc/channel/1093.m3u8" });
